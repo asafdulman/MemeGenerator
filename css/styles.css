@@ -15,9 +15,33 @@ body {
 header {
     width: 100vw;
     background-color: #ff7f00;
+    
 }
 
+footer {
+    width: 100vw;
+    height: 207px;
+    background-color: #ff7f00;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-rights-reserved-2020 {
+    margin-top: 3px;
+    width: 206px;
+    height: 19px;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 100;
+    text-align: center;
+    color: #ffffff;
+  }
+
 nav {
+    z-index: 5;
     width: 90vw;
     height: 66px;
     background-color: #ff7f00;
@@ -28,10 +52,10 @@ nav {
 }
 
 .logo {
-  width: 133px;
-  height: 22px;
-  object-fit: contain;
-  
+    width: 133px;
+    height: 22px;
+    object-fit: contain;
+
 }
 
 ul {
@@ -40,53 +64,54 @@ ul {
 }
 
 .gallery-nav-link {
-  width: 66px;
-  height: 19px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 19px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: black;
-  text-decoration: none;
-  padding-bottom: 20px;
+    width: 66px;
+    height: 19px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    padding-bottom: 20px;
 }
-
-/* .gallery-nav-link:hover {
-box-shadow: 0 0 0 #1d1d1d, inset 0 -6px 0 black;
-} */
 
 .seperator {
     width: 1px;
     height: 32px;
     background-color: #8a8a8a;
     margin: 0 10px;
-  }
+}
 
 .my-memes-nav-link {
-  width: 60px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 17px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
+    width: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.mobile-menu-btn {
+    display: none;
 }
 
 .main-container {
     width: 100vw;
-    height: 930px;
+    min-height: 80vh;
     background-color: #e3e3e3;
     margin: 0 auto;
-    padding-top: 10px;
+    padding: 10px 0 60px;
+
 }
 
 canvas {
@@ -98,7 +123,7 @@ canvas {
 .gallery-box {
     max-width: 60vw;
     margin: 0 auto;
-    height: 80%;
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(3, 33.333%);
     grid-template-rows: repeat(3, 33.333%);
@@ -119,173 +144,406 @@ grid-template-rows: repeat(auto-fill, minmax(100px, 1fr)); */
 /* Meme container and buttons */
 
 .meme-container {
+    padding: 20px 0;
     display: flex;
-    
+
 }
 
 .canvas-container {
     margin-left: 50px;
 }
 
+.edit-box {
+    width: 700px;
+    padding: 0 70px;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(5, 20%);
+}
+
 .user-text {
-    width: 373px;
-    height: 60px;
+    height: 70%;
     border-radius: 12px;
     background-color: #ffffff;
     border: none;
-}  
-
-.add-line {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    padding: 10px;
-    cursor: pointer;
-
+    grid-row: 1 / 2;
+    grid-column: 1 / 5;
 }
 
-.increase-font {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    padding: 10px;
-    cursor: pointer;
+.user-text::placeholder {
+    font-size: 25px;
+    font-weight: 700;
+    padding-left: 1px;
+    padding-top: 10px;
+    color: black;
 }
 
-.decrease-font {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    padding: 10px;
-    cursor: pointer;
+input[type="text"]
+{
+    font-size: 25px;
+    font-weight: 700;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .switch-line {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 12px;
     background-color: #ffffff;
     padding: 10px;
     cursor: pointer;
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+}
+
+.add-line {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+
 }
 
 .remove-line {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 12px;
     background-color: #ffffff;
     padding: 10px;
     cursor: pointer;
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
 }
 
 .move-up {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 12px;
     background-color: #ffffff;
     padding: 10px;
     cursor: pointer;
+    grid-row: 2 / 3;
+    grid-column: 4 / 5;
 }
 
 .move-down {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 12px;
     background-color: #ffffff;
     padding: 10px;
     cursor: pointer;
+    grid-row: 2 / 3;
+    grid-column: 5 / 6;
 }
 
-.align-center {
-    width: 40px;
-    height: 40px;
+.increase-font {
+    width: 50px;
+    height: 50px;
     border-radius: 12px;
     background-color: #ffffff;
     padding: 10px;
     cursor: pointer;
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+}
+
+.decrease-font {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
 }
 
 .align-left {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 12px;
     background-color: #ffffff;
     padding: 10px;
     cursor: pointer;
+    grid-row: 3 / 4;
+    grid-column: 3 / 4;
+}
+
+.align-center {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+    grid-row: 3 / 4;
+    grid-column: 4 / 5;
 }
 
 .align-right {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 12px;
     background-color: #ffffff;
     padding: 10px;
     cursor: pointer;
+    grid-row: 3 / 4;
+    grid-column: 5 / 6;
 }
 
-.change-color {
-    width: 30px;
-    height: 30px;
+
+.change-font-select {
+    width: 70%;
+    height: 60px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: Montserrat;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: none;
     cursor: pointer;
+    grid-row: 4 / 5;
+    grid-column: 1 / 4;
 }
 
-.change-stroke {
-    width: 30px;
-    height: 30px;
+#change-stroke {
+    width: 10px;
+    height: 10px;
+    grid-row: 5 / 6;
+    grid-column: 3 / 4;
+    visibility: hidden;
+}
+
+#change-color {
+    width: 10px;
+    height: 10px;
+    grid-row: 5 / 6;
+    grid-column: 4 / 5;
+    visibility: hidden;
+}
+
+.label-for-stroke {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    padding: 10px;
     cursor: pointer;
+
 }
 
-.display-none {
-    display: none;
+.label-stroke-box {
+    grid-row: 4 / 5;
+    grid-column: 4 / 5;
 }
+
+
+.label-color-box {
+    grid-row: 4 / 5;
+    grid-column: 5 / 6;
+}
+
+
+.label-for-color {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+.download-link {
+    width: 134px;
+    height: 55px;
+    padding: 15px;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #ff7f00;
+    border-radius: 12px;
+    grid-row: 5 / 6;
+    grid-column: 1 / 2;
+}
+
+
+
+
 
 @media (max-width: 1250px) {
-    
+
     .gallery-box {
-    max-width: 80vw;
-    
+        max-width: 80vw;
+
     }
 }
 
-@media (max-width: 900px) {
-    
+@media (max-width: 1060px ) {
+    .edit-box {
+        width: 500px;
+        padding: 0 40px;
+        display: grid;
+        grid-template-columns: repeat(6, 16.666%);
+        grid-template-rows: repeat(5, 20%);
+    }
+
+    .user-text {
+        height: 60%;
+        grid-row: 1 / 2;
+        grid-column: 1 / 5;
+    }
+
+    .change-font-select {
+        width: 80%;
+        grid-column: 1 / 4;
+    }
+}
+
+@media (max-width: 970px) {
+
+}
+
+@media (max-width: 930px) {
+
     .gallery-box {
-    max-width: 80vw;
-    
+        max-width: 80vw;
+
+    }
+}
+
+@media (max-width: 830px) {
+    .edit-box {
+        width: 60%;
+        padding: 0 15px;
+        grid-template-columns: repeat(5, 20%);
+        grid-template-rows: repeat(5, 20%);
+        grid-gap: 10px;
+        margin: 0 auto
+
+    }
+
+    .user-text::placeholder {
+        font-size: 20px;
+        font-weight: 700;
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    .meme-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #myCanvas {
+        margin: 5px auto 15px;
     }
 }
 
 @media (max-width: 780px) {
-    
+
     .gallery-box {
-    max-width: 70vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, 25%);
+        max-width: 80vw;
+        height: 100vh;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(4, 25%);
+        padding-bottom: 0;
     }
 }
 
 @media (max-width: 650px) {
-    
+
     .gallery-box {
-    max-width: 40vw;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 16.666%);
+        max-width: 80vw;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(6, 16.666%);
+        grid-gap: 10px;
+    }
+
+    .mobile-menu-btn {
+        font-size: 25px;
+        display: block;
+        position: absolute;
+        right: 20px;
+        padding: 10px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    ul {
+        text-align: center;
+        width: 30%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: fixed;
+        z-index: 2;
+        top: 50px;
+        left: 0;
+        height: 10vh;
+        background-color: #ff7f00;
+        transform: translateX(-100%);
+        border-radius: 2px;
+        transition: transform .8s, box-shadow .8s;
+        padding-left: 25px;
+    }
+
+    .screen {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(15, 15, 15, 0.357);
+        z-index: 1;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .8s;
+    }
+
+    body.menu-open ul {
+        transform: translateX(0);
+    }
+
+    body.menu-open .screen {
+        opacity: 0.6;
+        visibility: visible;
+    }
+
+    .gallery-nav-link {
+        color: white;
+        margin: 15px 0;
+    }
+
+    .seperator {
+        display: none;
+    }
+
+    .my-memes-nav-link {
+        width: 94px;
     }
 }
 
-@media (max-width: 450px) {
-    
-    .gallery-box {
-    max-width: 30vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(10, 10%);
+@media (max-width: 500px) {
+    .canvas-container {
+        margin-left: 5px;
     }
+
+    #myCanvas {
+        margin: 5px 0 15px;
+    }
+}
+
+.display-none {
+    display: none;
 }

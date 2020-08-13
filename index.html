@@ -10,60 +10,74 @@
 </head>
 
 <body onload="onInit()">
-
+    <div class="screen" onclick="toggleMenu()"></div>
     <header>
         <nav>
             <img class="logo" src="images/logo.png" alt="logo">
             <div class="main-nav">
                 <ul>
-                    <a onclick="onGoToGallery()" class="gallery-nav-link" href="#">Gallery</a>
+                    <a onclick="onGoToGallery()" class="list-item gallery-nav-link" href="#">Gallery</a>
                     <div class="seperator"></div>
-                    <a onclick="onShowMyMemes()" class="my-memes-nav-link" href="#">My Memes</a>
+                    <a onclick="onShowMyMemes()" class="list-item my-memes-nav-link" href="#">My Memes</a>
                 </ul>
             </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
         </nav>
     </header>
     <main class="main-container">
-       
-        <div class="meme-container display-none">
+
+        <div class=" display-none meme-container ">
 
             <div class="canvas-container">
-                <canvas id="myCanvas" height="501" width="541"></canvas>
+                <canvas id="myCanvas" height="450" width="400"></canvas>
             </div>
 
             <div class="edit-box">
 
-                <input oninput="GetTextToService()" class="user-text" type="text" placeholder="Enter your text here">
-                <img  onclick="onIncreaseFont()" class="increase-font" src="icons/increasefont.png" alt="">
-                <img onclick="onDecreaseFont()" class="decrease-font" src="icons/decreasefont.png" alt="">
-                <img onclick="onAddLine()" class="add-line" src="icons/add.png" alt="">
+                <input oninput="onGetUserText()" class="user-text" type="text" placeholder="Enter your text here">
 
-                <img onclick="onMoveLineUp()" class="move-up" src="icons/move-up.png" alt="">
-                <img onclick="onMoveLineDown()" class="move-down" src="icons/move-down.png" alt="">
-
-                <img onclick="onRemoveLine()" class="remove-line" src="icons/trash.png" alt="">
                 <img onclick="onSwitchLine()" class="switch-line" src="icons/switchline.png" alt="">
+                <img onclick="onAddLine()" class="add-line" src="icons/add.png" alt="">
+                <img onclick="onRemoveLine()" class="remove-line" src="icons/trash.png" alt="">
 
-                <input onchange="onChangeColor()" class="change-color" type="color">
-                <input onchange="onChangeStroke()" class="change-stroke" type="color">
-                <!-- <img  class="change-color" src="icons/colors.png" alt="">
-                <img  class="change-stroke" src="icons/textstroke.png" alt=""> -->
 
-                <img onclick="onAlignCenter()" class="align-center" src="icons/center-text.png" alt="">
+                <img onclick="onIncreaseFont()" class="increase-font" src="icons/increasefont.png" alt="">
+                <img onclick="onDecreaseFont()" class="decrease-font" src="icons/decreasefont.png" alt="">
                 <img onclick="onAlignLeft()" class="align-left" src="icons/align-to-left.png" alt="">
+                <img onclick="onAlignCenter()" class="align-center" src="icons/center-text.png" alt="">
                 <img onclick="onAlignRight()" class="align-right" src="icons/align-to-right.png" alt="">
 
+                <select onchange="onChangeFont()" class="change-font-select">
+                    <option value="Impact">Impact</option>
+                    <option value="Ariel">Ariel</option>
+                    <option value="Helvetica">Helvetica</option>
+                </select>
+                <img onclick="onMoveLineUp()" class="move-up" src="icons/move-up.png" alt="">
+                <img onclick="onMoveLineDown()" class="move-down" src="icons/move-down.png" alt="">
+                <div class="label-color-box">
+                    <label for="change-color"><img class="label-for-color" src="icons/colors.png" alt=""></label>
+                    <input onchange="onChangeColor()" id="change-color" type="color">
+                </div>
+                <div class="label-stroke-box">
+                    <label for="change-stroke"><img class="label-for-stroke" src="icons/textstroke.png" alt=""></label>
+                    <input onchange="onChangeStroke()" id="change-stroke" type="color">
+                </div>
 
-                <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
-                <button onclick="onSaveMeme()" class="save-meme-button">Save</button>
+
+
+
+
+
+                <a class="download-link" href="#" onclick="downloadCanvas(this)" download="">Download</a>
+                <!-- <button onclick="onSaveMeme()" class="save-meme-button">Save</button> -->
             </div>
 
-           
+
 
         </div>
 
-        <div class="gallery-box">
-   
+        <div class="gallery-box display-none">
+
         </div>
 
         <div class="my-memes display-none">
@@ -73,7 +87,8 @@
     </main>
 
     <footer>
-        <span>&copy&copy&copy</span>
+        <img class="logo" src="images/logo.png" alt="logo">
+        <span class="all-rights-reserved-2020">all rights reserved 2020</span>
     </footer>
 
 
@@ -81,7 +96,6 @@
     <script src="js/storage-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
-    <script src="js/gallery-controller.js"></script>
 
 </body>
 
