@@ -457,6 +457,15 @@ input[type="text"]
         grid-template-rows: repeat(4, 25%);
         padding-bottom: 0;
     }
+
+    .user-text {
+        padding: 10px;
+    }
+
+    .user-text {
+        grid-row: 1 / 2;
+        grid-column: 2 / 5;
+    }
 }
 
 @media (max-width: 650px) {
@@ -532,11 +541,36 @@ input[type="text"]
     .my-memes-nav-link {
         width: 94px;
     }
+
+    .user-text::placeholder {
+        font-size: 18px;
+        font-weight: 700;
+        padding-left: 10px;
+        padding-bottom: 20px;
+    }
+
+    .user-text {
+        padding: 10px;
+    }
 }
 
 @media (max-width: 500px) {
-    .canvas-container {
+
+     .canvas-container {
         margin-left: 5px;
+    }
+
+    .edit-box {
+        width: 70%;
+        grid-template-columns: repeat(5, 20%);
+        grid-template-rows: repeat(5, 20%);
+        grid-gap: 10px;
+        margin-left: 30px
+
+    }
+
+    .user-text {
+        grid-column: 1 / 6;
     }
 
     #myCanvas {

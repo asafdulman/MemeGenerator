@@ -1,13 +1,14 @@
 'use strict'
 var gCurrLine = 0
-
+var gFilter = false;
+var filteredImages = [];
 var gCanvas = document.getElementById('myCanvas');
 var gCtx = gCanvas.getContext('2d');
 
 function onInit() {
     renderImages()
     document.querySelector('.gallery-box').classList.remove('display-none');
- 
+
 }
 
 function onGoToGallery() {
@@ -18,10 +19,11 @@ function onGoToGallery() {
 
 }
 
-function renderCanvas(id) {
+function renderCanvas(id, isDragged = false) {
     document.querySelector('.meme-container').classList.remove('display-none')
     document.querySelector('.gallery-box').classList.add('display-none')
     document.querySelector('.my-memes').classList.add('display-none')
+
 
 
     gMeme.selectedImgId = id // move to service
@@ -30,30 +32,43 @@ function renderCanvas(id) {
     const img = new Image();
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
-        drawText(meme)
+        drawText(meme, isDragged)
     }
     img.src = image.url;
 }
 
-function onGetUserText() { 
+
+
+function onSearch (event) {
+    let searchText = event.target.value;
+    //if contains doesnt work then switch to includes
+    filteredImages = gImgs.filter((image) => image.keyword.contains(searchText))
+    
+    //show images on gallery
+    gFilter = true;
+    }
+
+function drawText(meme, isDragged) {
+    meme.lines.forEach(function (line) {
+        gCtx.fillStyle = isDragged ? 'tomato' : line.fillColor;
+        gCtx.textAlign = line.align
+        gCtx.strokeStyle = line.strokeColor;
+        gCtx.font = line.fontSize + 'px ' + line.fontFamily;
+        gCtx.fillText(line.txt, line.lng, line.alt);
+        gCtx.strokeText(line.txt, line.lng, line.alt);
+        gCtx.measureText(line.txt)
+    })
+}
+
+
+function onGetUserText() {
     let text = document.querySelector('.user-text').value;
     editTextInMeme(text)
     renderCanvas(gMeme.selectedImgId)
 }
 
-function drawText(meme) {
-        meme.lines.forEach(function (line) {
-            gCtx.fillStyle = line.fillColor;
-            gCtx.textAlign = line.align
-            gCtx.strokeStyle = line.strokeColor;
-            gCtx.font = line.fontSize + 'px ' + line.fontFamily;
-            gCtx.fillText(line.txt, 100, line.alt);
-            gCtx.strokeText(line.txt, 100, line.alt);
-        })   
-}
-
 function renderImages() {
-    let images = getImages();
+    let images = gFilter ? filteredImages : getImages();
     var strHTMLs = images.map(function (image) {
         return `
         <img class="image-gallery" src="images/${image.id}.jpg" onclick="renderCanvas(${image.id})" alt="">
@@ -69,9 +84,7 @@ function getImage(id) {
     return image;
 }
 
-function clearCanvas() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
-}
+
 
 //Buttons Functions
 
@@ -83,11 +96,12 @@ function onChangeFont() {
 
 function onIncreaseFont() {
     increasefont()
-    renderCanvas(getImageId()) 
+    renderCanvas(getImageId())
 }
+
 function onDecreaseFont() {
     decreasefont()
-    renderCanvas(getImageId()) 
+    renderCanvas(getImageId())
 }
 
 function onChangeColor() {
@@ -123,12 +137,13 @@ function onAlignRight() {
 
 function onMoveLineUp() {
     moveLineUp(gCurrLine)
-    renderCanvas(getImageId()) 
+    renderCanvas(getImageId())
 
 }
+
 function onMoveLineDown() {
     moveLineDown(gCurrLine)
-    renderCanvas(getImageId()) 
+    renderCanvas(getImageId())
 }
 
 //Add / Delete Lines // switch
@@ -138,25 +153,26 @@ function onAddLine() {
     document.querySelector('.user-text').value = ''
     changeLineIdx()
     gCurrLine = getLinesLength()
-    renderCanvas(getImageId()) 
+    renderCanvas(getImageId())
 }
+
 function onRemoveLine() {
-    if(!gCurrLine) 
-    removeLine(gCurrLine)
+    if (!gCurrLine)
+        removeLine(gCurrLine)
     renderCanvas(getImageId())
     let linesLength = getLinesLength() + 1
     if (!linesLength) {
         gCurrLine = 0
         onAddLine();
 
-    } 
+    }
     document.querySelector('.user-text').value = gMeme.lines[gCurrLine].txt
 
 }
 
 function onSwitchLine() {
     changeLineIdx()
-    
+
     if (gCurrLine === gMeme.lines.length - 1) {
         gCurrLine = 0
     } else {
@@ -187,22 +203,83 @@ function toggleMenu() {
 
 }
 
-// function resizeCanvas() {
-//     const elContainer = document.querySelector('.canvas-container');
-//     gCanvas.width = elContainer.offsetWidth;
-//     gCanvas.height = elContainer.offsetHeight;
-//     console.log('gCanvas.width', gCanvas.width);
-//     let id = gMeme.selectedImgId
-//     renderCanvas(id)
+function clearCanvas() {
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+}
 
-// }
+//////////// DRAG AND DROP ////////////
 
-// window.addEventListener('resize', function(){
-//     resizeCanvas()
-// })
+
+var offsetX = 50;
+var offsetY = 100;
+
+var dragok = false;
+var startX;
+var startY;
+
+function onMouseDown(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    var mouseX = parseInt(event.clientX - offsetX);
+    var mouseY = parseInt(event.clientY - offsetY);
+    let width = gCtx.measureText(gMeme.lines[gCurrLine].txt).width
+
+
+    dragok = false;
+    let meme = getMeme()
+
+    meme.lines.forEach(function (line) {
+
+        if (mouseX > line.lng && mouseX < line.lng + width && mouseY < line.alt && mouseY <= line.alt && mouseY + 35 >= line.alt) {
+            dragok = true;
+            line.isDragging = true;
+
+        }
+    })
+
+    startX = mouseX;
+    startY = mouseY;
+}
+
+function onMouseUp(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    dragok = false;
+    let meme = getMeme()
+    meme.lines.forEach(function (line) {
+        line.isDragging = false;
+    })
+    renderCanvas(gMeme.selectedImgId)
+}
+
+function onMouseMove(event) {
+    if (dragok) {
+        event.preventDefault();
+        event.stopPropagation();
+        var mouseX = parseInt(event.clientX - offsetX);
+        var mouseY = parseInt(event.clientY - offsetY);
+        var distanceX = mouseX - startX;
+        var distanceY = mouseY - startY;
+        let meme = getMeme()
+        meme.lines.forEach(function (line) {
+            if (line.isDragging) {
+                line.lng += distanceX;
+                line.alt += distanceY;
+            }
+        })
+        renderCanvas(gMeme.selectedImgId, true);
+
+        startX = mouseX;
+        startY = mouseY;
+
+    }
+}
+
+
 
 // function highlightLine(line) {
-    
+
 
 // }
 
@@ -220,7 +297,7 @@ function toggleMenu() {
 
 // function renderMyMemes() {
 //     let memes = getMyMemes()
-    
+
 //     var strHTMLs = memes.map(function (meme) {
 //         return `
 //         <img class="meme-gallery" src="" alt="">
@@ -228,5 +305,5 @@ function toggleMenu() {
 //     });
 //     var elGallery = document.querySelector('.gallery-box');
 //     elGallery.innerHTML = strHTMLs.join('');
-    
+
 // }

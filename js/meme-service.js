@@ -69,10 +69,11 @@ var gMeme = {
         fontFamily: 'Impact',
         fontSize: 30,
         alt: 70,
+        lng: 100,
         align: 'left',
         strokeColor: 'black',
-        fillColor: 'white'
-
+        fillColor: 'white',
+        isDragging: false
     }]
 }
 
@@ -85,10 +86,11 @@ function resetMeme() {
             fontFamily: 'Impact',
             fontSize: 30,
             alt: 70,
+            lng: 100,
             align: 'left',
             strokeColor: 'black',
-            fillColor: 'white'
-
+            fillColor: 'white',
+            isDragging: false
         }]
     }
 }
@@ -190,6 +192,7 @@ function addLine() {
         fontFamily: "Impact",
         fontSize: 30,
         alt: lineHeight,
+        lng: 100,
         align: 'left',
         strokeColor: 'black',
         fillColor: 'white'
