@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body onload="onInit()">
+
+    <header>
+        <nav>
+            <img class="logo" src="images/logo.png" alt="logo">
+            <div class="main-nav">
+                <ul>
+                    <a onclick="onGoToGallery()" class="gallery-nav-link" href="#">Gallery</a>
+                    <div class="seperator"></div>
+                    <a onclick="onShowMyMemes()" class="my-memes-nav-link" href="#">My Memes</a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="main-container">
+       
+        <div class="meme-container display-none">
+
+            <div class="canvas-container">
+                <canvas id="myCanvas" height="501" width="541"></canvas>
+            </div>
+
+            <div class="edit-box">
+
+                <input oninput="GetTextToService()" class="user-text" type="text" placeholder="Enter your text here">
+                <img  onclick="onIncreaseFont()" class="increase-font" src="icons/increasefont.png" alt="">
+                <img onclick="onDecreaseFont()" class="decrease-font" src="icons/decreasefont.png" alt="">
+                <img onclick="onAddLine()" class="add-line" src="icons/add.png" alt="">
+
+                <img onclick="onMoveLineUp()" class="move-up" src="icons/move-up.png" alt="">
+                <img onclick="onMoveLineDown()" class="move-down" src="icons/move-down.png" alt="">
+
+                <img onclick="onRemoveLine()" class="remove-line" src="icons/trash.png" alt="">
+                <img onclick="onSwitchLine()" class="switch-line" src="icons/switchline.png" alt="">
+
+                <input onchange="onChangeColor()" class="change-color" type="color">
+                <input onchange="onChangeStroke()" class="change-stroke" type="color">
+                <!-- <img  class="change-color" src="icons/colors.png" alt="">
+                <img  class="change-stroke" src="icons/textstroke.png" alt=""> -->
+
+                <img onclick="onAlignCenter()" class="align-center" src="icons/center-text.png" alt="">
+                <img onclick="onAlignLeft()" class="align-left" src="icons/align-to-left.png" alt="">
+                <img onclick="onAlignRight()" class="align-right" src="icons/align-to-right.png" alt="">
+
+
+                <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
+                <button onclick="onSaveMeme()" class="save-meme-button">Save</button>
+            </div>
+
+           
+
+        </div>
+
+        <div class="gallery-box">
+   
+        </div>
+
+        <div class="my-memes display-none">
+            <div class="my-memes-gallery"></div>
+        </div>
+
+    </main>
+
+    <footer>
+        <span>&copy&copy&copy</span>
+    </footer>
+
+
+    <script src="utils.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+    <script src="js/gallery-controller.js"></script>
+
+</body>
+
+</html>
