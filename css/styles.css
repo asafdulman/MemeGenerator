@@ -120,9 +120,18 @@ canvas {
     border: 1px solid black;
 }
 
-.gallery-box {
-    max-width: 60vw;
+.home-container {
+    max-width: 80%;
     margin: 0 auto;
+}
+
+.search-text {
+    max-width: 80%;
+}
+
+.gallery-box {
+    width: 80vw;
+    margin: 20px auto 0;
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(3, 33.333%);
@@ -138,7 +147,7 @@ grid-template-rows: repeat(auto-fill, minmax(100px, 1fr)); */
     height: 100%;
     cursor: pointer;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 /* Meme container and buttons */
@@ -361,6 +370,7 @@ input[type="text"]
 }
 
 .download-link {
+    align-self: self-end;
     width: 134px;
     height: 55px;
     padding: 15px;
@@ -373,6 +383,10 @@ input[type="text"]
     border-radius: 12px;
     grid-row: 5 / 6;
     grid-column: 1 / 2;
+}
+
+.download-link:hover {
+    background-color: #fd9e3f;
 }
 
 
@@ -490,17 +504,17 @@ input[type="text"]
 
     ul {
         text-align: center;
-        width: 30%;
+        width: 40%;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
         position: fixed;
         z-index: 2;
-        top: 50px;
+        top: 0;
         left: 0;
-        height: 10vh;
+        height: 12vh;
         background-color: #ff7f00;
-        transform: translateX(-100%);
+        transform: translateY(-100%);
         border-radius: 2px;
         transition: transform .8s, box-shadow .8s;
         padding-left: 25px;
@@ -510,7 +524,7 @@ input[type="text"]
         width: 100%;
         height: 100%;
         position: fixed;
-        top: 0;
+        top: 65px;
         left: 0;
         background-color: rgba(15, 15, 15, 0.357);
         z-index: 1;
@@ -521,7 +535,7 @@ input[type="text"]
     }
 
     body.menu-open ul {
-        transform: translateX(0);
+        transform: translateY(44%);
     }
 
     body.menu-open .screen {

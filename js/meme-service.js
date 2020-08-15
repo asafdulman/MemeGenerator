@@ -55,12 +55,6 @@ var gImgs = [{
     },
 ];
 
-//each meme should have the id of the image and the line we need to show and edit.
-//each line inside the meme should have the text, size, alignment, and color.
-//later we will add position with an X and Y on the canvas.
-
-
-
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
@@ -73,7 +67,8 @@ var gMeme = {
         align: 'left',
         strokeColor: 'black',
         fillColor: 'white',
-        isDragging: false
+        isDragging: false,
+        isHighlight: false
     }]
 }
 
@@ -90,9 +85,31 @@ function resetMeme() {
             align: 'left',
             strokeColor: 'black',
             fillColor: 'white',
-            isDragging: false
+            isDragging: false,
+            isHighlight: false
         }]
     }
+}
+
+function addLine() {
+    let lineHeight;
+    if (!gMeme.lines.length) lineHeight = 70;
+    else if (gMeme.lines.length === 1) lineHeight = gCanvas.height - 100;
+    else lineHeight = 200;
+    let newLine = {
+        txt: 'Some text Here',
+        fontFamily: "Impact",
+        fontSize: 30,
+        alt: lineHeight,
+        lng: 100,
+        align: 'left',
+        strokeColor: 'black',
+        fillColor: 'white',
+        isDragging: false,
+        isHighlight: false
+    }
+    gMeme.lines.push(newLine)
+
 }
 
 function changeLineIdx() {
@@ -182,24 +199,7 @@ function moveLineDown() {
     gMeme.lines[gMeme.selectedLineIdx].alt += 2
 }
 
-function addLine() {
-    let lineHeight;
-    if (!gMeme.lines.length) lineHeight = 70;
-    else if (gMeme.lines.length === 1) lineHeight = gCanvas.height - 100;
-    else lineHeight = 200;
-    let newLine = {
-        txt: 'Some text Here',
-        fontFamily: "Impact",
-        fontSize: 30,
-        alt: lineHeight,
-        lng: 100,
-        align: 'left',
-        strokeColor: 'black',
-        fillColor: 'white'
-    }
-    gMeme.lines.push(newLine)
 
-}
 
 function getLinesLength() {
     return gMeme.lines.length - 1;

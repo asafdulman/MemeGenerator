@@ -18,7 +18,7 @@
                 <ul>
                     <a onclick="onGoToGallery()" class="list-item gallery-nav-link" href="#">Gallery</a>
                     <div class="seperator"></div>
-                    <a onclick="onShowMyMemes()" class="list-item my-memes-nav-link" href="#">My Memes</a>
+                    <a class="list-item my-memes-nav-link" href="#">My Memes</a>
                 </ul>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
@@ -26,34 +26,34 @@
     </header>
     <main class="main-container">
 
-        <div class=" display-none meme-container ">
+        <div class="display-none meme-container">
 
             <div class="canvas-container">
-                <canvas onmousedown="onMouseDown(event)" onmouseup="onMouseUp(event)" onmousemove="onMouseMove(event)" id="myCanvas" height="450" width="400"></canvas>
+                <canvas onmousedown="onMouseDown(event)" onmouseup="onMouseUp(event)" onmousemove="onMouseMove(event)" id="myCanvas" height="450" width="410"></canvas>
             </div>
 
             <div class="edit-box">
 
                 <input oninput="onGetUserText()" class="user-text" type="text" placeholder="Enter your text here">
 
-                <img onclick="onSwitchLine()" class="switch-line" src="icons/switchline.png" alt="">
-                <img onclick="onAddLine()" class="add-line" src="icons/add.png" alt="">
-                <img onclick="onRemoveLine()" class="remove-line" src="icons/trash.png" alt="">
+                <img onclick="onSwitchLine()" title="Switch Line" class="switch-line" src="icons/switchline.png" alt="">
+                <img onclick="onAddLine()" title="Add Line" class="add-line" src="icons/add.png" alt="">
+                <img onclick="onRemoveLine()" title="Delete Line" class="remove-line" src="icons/trash.png" alt="">
 
 
-                <img onclick="onIncreaseFont()" class="increase-font" src="icons/increasefont.png" alt="">
-                <img onclick="onDecreaseFont()" class="decrease-font" src="icons/decreasefont.png" alt="">
-                <img onclick="onAlignLeft()" class="align-left" src="icons/align-to-left.png" alt="">
-                <img onclick="onAlignCenter()" class="align-center" src="icons/center-text.png" alt="">
-                <img onclick="onAlignRight()" class="align-right" src="icons/align-to-right.png" alt="">
+                <img onclick="onIncreaseFont()" title="Increase Font" class="increase-font" src="icons/increasefont.png" alt="">
+                <img onclick="onDecreaseFont()" title="Decrease Font" class="decrease-font" src="icons/decreasefont.png" alt="">
+                <img onclick="onAlignLeft()" title="Align Left" class="align-left" src="icons/align-to-left.png" alt="">
+                <img onclick="onAlignCenter()" title="Align Center" class="align-center" src="icons/center-text.png" alt="">
+                <img onclick="onAlignRight()" title="Align Right" class="align-right" src="icons/align-to-right.png" alt="">
 
                 <select onchange="onChangeFont()" class="change-font-select">
                     <option value="Impact">Impact</option>
                     <option value="Ariel">Ariel</option>
                     <option value="Helvetica">Helvetica</option>
                 </select>
-                <img onclick="onMoveLineUp()" class="move-up" src="icons/move-up.png" alt="">
-                <img onclick="onMoveLineDown()" class="move-down" src="icons/move-down.png" alt="">
+                <img onclick="onMoveLineUp()" title="Move Up" class="move-up" src="icons/move-up.png" alt="">
+                <img onclick="onMoveLineDown()" title="Move Down" class="move-down" src="icons/move-down.png" alt="">
                 <div class="label-color-box">
                     <label for="change-color"><img class="label-for-color" src="icons/colors.png" alt=""></label>
                     <input onchange="onChangeColor()" id="change-color" type="color">
