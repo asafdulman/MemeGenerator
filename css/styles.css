@@ -137,7 +137,6 @@ canvas {
     grid-gap: 20px;
 }
 
-
 .image-gallery {
     width: 90%;
     height: 100%;
@@ -149,6 +148,30 @@ canvas {
 
 .image-gallery:hover {
 opacity: 0.6;
+}
+
+.search-container {
+    max-width: 80%;
+    display: flex;
+}
+
+.search-input {
+    padding: 10px;
+}
+
+.search-results-box {
+    background-color: darkorange;
+    color: rgba(248, 207, 207, 0.897);
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-family: Montserrat;
+}
+
+.search-result {
+    cursor: pointer;
 }
 
 .my-memes-gallery {
@@ -202,13 +225,6 @@ opacity: 0.6;
     padding-left: 1px;
     padding-top: 10px;
     color: black;
-}
-
-input[type="text"] {
-    font-size: 25px;
-    font-weight: 700;
-    padding-left: 10px;
-    padding-top: 10px;
 }
 
 .switch-line {
@@ -523,6 +539,10 @@ input[type="text"] {
 
 @media (max-width: 780px) {
 
+    .search-container {
+        display: none;
+    }
+
     .gallery-box {
         max-width: 80vw;
         height: 100vh;
@@ -553,6 +573,10 @@ input[type="text"] {
 }
 
 @media (max-width: 650px) {
+
+    .search-container {
+        display: none;
+    }
 
     .gallery-box {
         max-width: 90vw;
@@ -672,6 +696,24 @@ input[type="text"] {
         grid-column: 1 / 6;
     }
 
+    ul {
+        text-align: center;
+        width: 40%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        height: 15vh;
+        background-color: #ff7f00;
+        transform: translateY(-100%);
+        border-radius: 2px;
+        transition: transform .8s, box-shadow .8s;
+        padding-left: 25px;
+    }
+
     #myCanvas {
         margin: 5px 0 15px;
     }
@@ -679,16 +721,42 @@ input[type="text"] {
     .save-meme-button {
         grid-column: 4 / 6;
        }
+
+       .search-container {
+        display: none;
+    }
     
 }
 
 @media (max-width: 500px) {
    .canvas-container {
-       margin-left: 5px;
+       margin: 5px auto;
    }
+
+   ul {
+    text-align: center;
+    width: 40%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 15vh;
+    background-color: #ff7f00;
+    transform: translateY(-100%);
+    border-radius: 2px;
+    transition: transform .8s, box-shadow .8s;
+    padding-left: 25px;
+}
 
    .save-meme-button {
     grid-column: 4 / 6;
+   }
+
+   .search-container {
+       display: none;
    }
 }
 

@@ -7,13 +7,15 @@ var gCtx = gCanvas.getContext('2d');
 function onInit() {
     renderImages();
     renderCanvasForMobile()
-    document.querySelector('.gallery-box').classList.remove('display-none');
+    resizeCanvas()
 
 }
 
 function renderCanvas(id) {
-    document.querySelector('.meme-container').classList.remove('display-none');
+    document.querySelector('.meme-container').classList.remove('display-none');  //@CR can make all changes with toggle
     document.querySelector('.gallery-box').classList.add('display-none');
+    document.querySelector('.search-container').classList.add('display-none');
+
 
     gMeme.selectedImgId = id;
     let meme = getMeme();
@@ -46,7 +48,7 @@ function renderCanvasForMobile() {
     if (window.screen.width < 450) {
         gCanvas.width = 300
         gCanvas.height = 300
-        renderCanvas(gMeme.selectedImgId)
+        renderCanvas(getImageId())
     }
 }
 
@@ -54,10 +56,8 @@ function renderCanvasForMobile() {
 function onGetUserText() {
     let text = document.querySelector('.user-text').value;
     editTextInMeme(text);
-    renderCanvas(gMeme.selectedImgId);
+    renderCanvas(getImageId());
 }
-
-
 
 //Buttons Functions
 
@@ -250,6 +250,11 @@ function onMouseMove(event) {
 }
 
 function onSaveMeme() {
+    document.querySelector('.save-meme-button').innerHTML = 'Saved!';
+    setTimeout(() => {
+        document.querySelector('.save-meme-button').innerHTML = 'Save';
+                
+    }, 500);
     var imgContent = gCanvas.toDataURL('image/jpeg');
     var meme = {
         id: makeId(),
@@ -259,3 +264,8 @@ function onSaveMeme() {
     saveMemesToStorage(meme);
 }
 
+function resizeCanvas() {
+    if (window.screen.width < 400) {
+        gCanvas.width = 300
+    }
+}

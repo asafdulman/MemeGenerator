@@ -3,57 +3,7 @@
 const KEY = 'memes';
 var gMemes = [];
 
-var gKeywords = {
-    'happy': 12,
-    'funny puk': 1
-}
 
-var gImgs = [{
-        id: 1,
-        url: 'images/1.jpg',
-        keywords: ['idiot']
-    },
-    {
-        id: 2,
-        url: 'images/2.jpg',
-        keywords: ['animals', 'cute']
-    },
-    {
-        id: 3,
-        url: 'images/3.jpg',
-        keywords: ['animals', 'cute']
-    },
-    {
-        id: 4,
-        url: 'images/4.jpg',
-        keywords: ['animals', 'cute']
-    },
-    {
-        id: 5,
-        url: 'images/5.jpg',
-        keywords: ['success']
-    },
-    {
-        id: 6,
-        url: 'images/6.jpg',
-        keywords: ['idiot']
-    },
-    {
-        id: 7,
-        url: 'images/7.jpg',
-        keywords: ['cute']
-    },
-    {
-        id: 8,
-        url: 'images/8.jpg',
-        keywords: ['think']
-    },
-    {
-        id: 9,
-        url: 'images/9.jpg',
-        keywords: ['funny']
-    },
-];
 
 var gMeme = {
     selectedImgId: 5,
