@@ -18,7 +18,7 @@
                 <ul>
                     <a onclick="onGoToGallery()" class="list-item gallery-nav-link" href="#">Gallery</a>
                     <div class="seperator"></div>
-                    <a class="list-item my-memes-nav-link" href="#">My Memes</a>
+                    <a onclick="onShowSavedMemes()" class="list-item my-memes-nav-link" href="#">My Memes</a>
                 </ul>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
@@ -63,13 +63,8 @@
                     <input onchange="onChangeStroke()" id="change-stroke" type="color">
                 </div>
 
-
-
-
-
-
                 <a class="download-link" href="#" onclick="downloadCanvas(this)" download="">Download</a>
-                <!-- <button onclick="onSaveMeme()" class="save-meme-button">Save</button> -->
+                <button onclick="onSaveMeme()" class="save-meme-button">Save</button>
             </div>
 
 
@@ -92,10 +87,12 @@
     </footer>
 
 
-    <script src="utils.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/storage-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/gallery-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
 
 </body>
 

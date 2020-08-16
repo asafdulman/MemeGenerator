@@ -1,7 +1,7 @@
 'use strict'
 
 const KEY = 'memes';
-var gMyMemes = [];
+var gMemes = [];
 
 var gKeywords = {
     'happy': 12,
@@ -89,6 +89,7 @@ function resetMeme() {
             isHighlight: false
         }]
     }
+    gCurrLine = 0
 }
 
 function addLine() {
@@ -137,23 +138,23 @@ function getImageId() {
     return gMeme.selectedImgId
 }
 
-function saveMeme() {
-    gMyMemes.push(gMeme)
-    _saveMemesToStorage(KEY, gMyMemes)
-}
-
-function _saveMemesToStorage() {
-    saveToStorage(KEY, gMyMemes)
-}
-
-function getMeme() {
-    return gMeme;
+function saveMemesToStorage(meme) {
+    var memes = loadFromStorage(KEY);
+    if (memes) gMemes = memes;
+    gMemes.push(meme);
+    saveToStorage(KEY, gMemes);
 }
 
 function getMyMemes() {
     let memes = loadFromStorage(KEY);
     return memes;
 }
+
+function getMeme() {
+    return gMeme;
+}
+
+
 
 function getImgById(imgId) {
     return gImgs.find(function (image) {
@@ -220,13 +221,13 @@ function changeStroke(color) {
 }
 
 function alignCenter() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'center'
+    gMeme.lines[gMeme.selectedLineIdx].lng = 170
 }
 
 function alignLeft() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'left'
+    gMeme.lines[gMeme.selectedLineIdx].lng = 60
 }
 
 function alignRight() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'right'
+    gMeme.lines[gMeme.selectedLineIdx].lng = 300
 }
